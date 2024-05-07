@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\Post;
+use App\Models\Produk;
+use App\Models\Pengguna;
+use App\Models\Telepon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +37,29 @@ Route::get('/home', function () {
 Route::get('/kontak', function () {
     return view('biodata3');
 });
+
+Route::get('/data_post', function () {
+    $posts = Post::all();
+    return view('tampil_post', compact('posts'));
+});
+
+Route::get('/data_produk', function () {
+    $produks = produk::find(3);
+    return $produks;
+    // return view('tampil_produk', compact('produks'));
+});
+
+Route::get('/data_pengguna', function () {
+    $penggunas = pengguna::all();
+    return view('tampil_pengguna', compact('penggunas'));
+});
+
+Route::get('/data_telepon', function () {
+    $telepons = telepon::all();
+    return view('tampil_telepon', compact('telepons'));
+});
+
+
 
 // parameter
 Route::get('/about2/{nama}/{jenis_kelamin}/{alamat}/{pendidikan}/{pekerjaan}', function (Request $request,$nama,$jenis_kelamin,$alamat,$pendidikan,$pekerjaan){
